@@ -10,7 +10,7 @@ body {
     background: linear-gradient(130deg, #b939e0, #450162);
 }
 
-li::first-letter {
+li span::first-letter {
     text-transform: capitalize;
 }
 
