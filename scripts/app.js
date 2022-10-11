@@ -11,9 +11,9 @@ let todoStorage = [];
 let counter = 0;
 
 // Displays saved items on load if any
-window.onload = ()=> {
+window.onload = () => {
 	todoStorage = JSON.parse(localStorage.getItem('Todo List')) || [];
-	todoStorage.forEach(()=> {
+	todoStorage.forEach(() => {
 		createTodoList(todoStorage);
 		counter++
 	});
@@ -21,7 +21,7 @@ window.onload = ()=> {
 };
 
 // Displays task on submit
-todoForm.addEventListener('submit', (e)=> {
+todoForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 	addTask();
 });
@@ -30,7 +30,7 @@ todoForm.addEventListener('submit', (e)=> {
 function addTask() {
   	let inputValue = todoInput.value.trim().toLowerCase();
 
-  	if(inputValue.length > 1 && !todoStorage.some(item => item.name === inputValue)) {
+  	if(inputValue.length > 1 && !todoStorage.some(task => task.name === inputValue)) {
 		todoStorage.push( {name: inputValue, completed: false} );
 
 		createTodoList(todoStorage);
@@ -42,12 +42,12 @@ function addTask() {
 
 		errorMsg.style.display = 'none';
 
-    } else if(todoStorage.some(item => item.name === inputValue)) {
-		errorMsg.innerHTML = 'Item already added to the list';
+    } else if(todoStorage.some(task => task.name === inputValue)) {
+		errorMsg.innerHTML = 'Item already added to the list.';
 		errorMsg.style.display = 'block';
 
     } else if(inputValue.length < 1) {
-		errorMsg.innerHTML = 'Input cannot be empty';
+		errorMsg.innerHTML = 'Input cannot be empty! Enter a task.';
 		errorMsg.style.display = 'block';
     }
 }
@@ -63,14 +63,15 @@ function createTodoList(todo) {
 		let deleteBtn = document.createElement('button');
 		let checkBtn = document.createElement('input');
 
+		listItem.classList.add('task');
 		taskValue.innerHTML = `${task.name}`;
 
 		checkBtn.setAttribute('type', 'checkbox');
-		checkBtn.addEventListener('change', ()=> checkTask(task, taskValue));
+		checkBtn.addEventListener('change', () => checkTask(task, taskValue));
 
 		deleteBtn.innerHTML = `<i class="fa-solid fa-xmark delete-btn"></i>`;
 		deleteBtn.classList.add('btn');
-		deleteBtn.addEventListener('click', ()=> deleteTask(index));
+		deleteBtn.addEventListener('click', () => deleteTask(index));
 
 		listItem.appendChild(taskValue);
 		listItem.appendChild(taskOptions);
@@ -122,7 +123,7 @@ function deleteTask(index) {
 }
 
 // Delete all items from list
-clearBtn.addEventListener('click', ()=> {
+clearBtn.addEventListener('click', () => {
 	todoStorage = [];
 	counter = 0;
 
