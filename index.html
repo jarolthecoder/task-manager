@@ -14,10 +14,10 @@
         <!-- Task Manager Screen -->
         <article id="todo-holder" class="d-flex justify-content-center align-items-start flex-column rounded" data-aos="fade-up" data-aos-duration="600">
             <!-- Task Manager Header -->
-            <header id="todo-header" class="p-5 w-100">
+            <header id="todo-header" class="w-100 section-container">
                 <h1>Task Manager</h1>
-                <section class="input-container pt-4">
-                    <form id="todo-form" class="d-flex justify-content-between w-100 p-2">
+                <section class="input-container">
+                    <form id="todo-form" class="d-flex justify-content-between w-100">
                         <input type="search" id="todo-input" class="form-control shadow-none" placeholder="Add new task">
                         <button id="add-btn" class="btn" type="submit"><i class="fa-solid fa-plus"></i></button>
                     </form>
@@ -25,15 +25,15 @@
                 </section>
             </header>
             <!-- Task Manage Body -->
-            <section class="list-container p-5 w-100">
+            <section class="list-container w-100 section-container">
                 <header class="d-flex justify-content-between align-item-end w-100">
                     <h4>To Do</h4>
                     <p class="item-counter"><span class="title">Items:</span> <span id="item-counter">0</span></p>
                 </header>
-                <ul id="todo-list" class="list-group py-4">
+                <ul id="todo-list" class="list-group">
                     <!-- Tasks List -->
                 </ul>
-                <p id="empty-msg" class="py-3">List is empty. Nothing to do.</p>
+                <p id="empty-msg" class="py-3">Your list is empty.</p>
                 <button id="clear-btn" class="btn"><i class="fa-solid fa-trash"></i> Delete all items</button>
             </section>
         </article>
