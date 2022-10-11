@@ -242,6 +242,12 @@ input[type="checkbox"]:checked::before {
 }
 
 @media screen and (max-width: 750px) {
+    :root {
+    --fs-small: 0.85rem;
+    --fs-regular: 1rem;
+    --fs-medium: 1.2rem;
+    --fs-large: 1.4rem;
+}
     .section-container {
         padding: 3rem 1rem;
     }
