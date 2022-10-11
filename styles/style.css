@@ -152,7 +152,6 @@ h4 {
     align-items: center;
     border-radius: 0.25rem;
     font-size: var(--fs-regular);
-    color: var(--clr-text-purple);
     background-color: var(--clr-purple-light);
 }
 
