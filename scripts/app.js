@@ -23,11 +23,11 @@ window.onload = ()=> {
 // Displays task on submit
 todoForm.addEventListener('submit', (e)=> {
 	e.preventDefault();
-	addTodo();
+	addTask();
 });
 
 // Adds task to the list on user input
-function addTodo() {
+function addTask() {
   	let inputValue = todoInput.value.trim().toLowerCase();
 
   	if(inputValue.length > 1 && !todoStorage.some(item => item.name === inputValue)) {
