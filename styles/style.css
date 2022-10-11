@@ -44,6 +44,10 @@ li {
     font-weight: 600;
 }
 
+.completed {
+    text-decoration: line-through;
+}
+
 @media screen and (max-width: 750px) {
     #main-container {
         width: 95% !important;

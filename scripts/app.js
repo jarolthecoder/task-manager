@@ -13,24 +13,25 @@ let counter = 0;
 // Displays saved items on load if any
 window.onload = ()=> {
   	todoStorage = JSON.parse(localStorage.getItem('Todo List')) || [];
-	todoStorage.forEach(()=>  createTodoList(todoStorage));
-
-    for (let items of todoStorage) counter++
+	todoStorage.forEach(()=> {
+        createTodoList(todoStorage)
+        counter++
+    });
     itemCounter.innerHTML = counter;
 };
 
-// Displays to-do item on submit
+// Displays task on submit
 todoForm.addEventListener('submit', (e)=> {
 	e.preventDefault();
 	addTodo();
 });
 
-// Adds to-do item to the list on user input
+// Adds task to the list on user input
 function addTodo() {
     let inputValue = todoInput.value.trim().toLowerCase();
 
-    if(inputValue.length > 1 && !todoStorage.some(item => item.title === inputValue)) {
-        todoStorage.push( {title: inputValue, completed: false} );
+    if(inputValue.length > 1 && !todoStorage.some(item => item.name === inputValue)) {
+        todoStorage.push( {name: inputValue, completed: false} );
 
         createTodoList(todoStorage);
         todoInput.value = ''
@@ -41,7 +42,7 @@ function addTodo() {
 
 		errorMsg.style.display = 'none';
 
-    } else if(todoStorage.some(item => item.title === inputValue)) {
+    } else if(todoStorage.some(item => item.name === inputValue)) {
 		errorMsg.innerHTML = 'Item already added to the list'
 		errorMsg.style.display = 'block'
 
@@ -51,36 +52,62 @@ function addTodo() {
 	}
 }
 
-// Creates and controls to-do list
+// Creates and controls task list
 function createTodoList(todo) {
     todoList.innerHTML = ''
 
-    todo.forEach((item, index) => {
+    todo.forEach((task, index) => {
         let listItem = document.createElement('li');
-        let listValue = document.createElement('span');
-        let listOptions = document.createElement('span');
+        let taskValue = document.createElement('span');
+        let taskOptions = document.createElement('span');
         let deleteBtn = document.createElement('button');
         let checkBtn = document.createElement('input');
 
-        listValue.innerHTML = `${item.title}`;
+        taskValue.innerHTML = `${task.name}`;
 
         checkBtn.setAttribute('type', 'checkbox');
+        checkBtn.addEventListener('change', ()=> checkItem(task, taskValue));
 
         deleteBtn.innerHTML = `<i class="fa-solid fa-xmark delete-btn"></i>`;
         deleteBtn.classList.add('btn');
         deleteBtn.addEventListener('click', ()=> deleteItem(index));
 
-        listItem.appendChild(listValue);
-        listItem.appendChild(listOptions);
+        listItem.appendChild(taskValue);
+        listItem.appendChild(taskOptions);
 
-        listOptions.appendChild(checkBtn);
-        listOptions.appendChild(deleteBtn);
+        taskOptions.appendChild(checkBtn);
+        taskOptions.appendChild(deleteBtn);
 
         todoList.appendChild(listItem);
+
+        // Checks if task is completed and keeps its state
+        if(task.completed) {
+            task.completed = true;
+            checkBtn.checked = true;
+            taskValue.classList.add('completed');
+        } else {
+            task.completed = false;
+            checkBtn.checked = false;
+            taskValue.classList.remove('completed');
+        }
+        
     });
 
-
+    // Empty message
     todoStorage.length > 0 ? emptyMsg.style.display = 'none' : emptyMsg.style.display = 'block';
+}
+
+// Marks task as completed
+function checkItem(task, value) {
+    if(!task.completed) {
+        task.completed = true;
+        localStorage.setItem('Todo List', JSON.stringify(todoStorage));
+        value.classList.add('completed');
+    } else{
+        task.completed = false;
+        localStorage.setItem('Todo List', JSON.stringify(todoStorage));
+        value.classList.remove('completed');
+    }
 }
 
 // Delete single item from list
