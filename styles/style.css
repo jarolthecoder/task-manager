@@ -102,7 +102,7 @@ h4 {
   height: 1.5rem;
   width: 1.5rem;
   border-radius: 50em;
-  background: url(/icons/clear-icon.png) no-repeat 50% 50%;
+  background: url(./icons/clear-icon.png) no-repeat 50% 50%;
   background-size: contain;
   opacity: 0;
   pointer-events: none;
@@ -180,13 +180,13 @@ h4 {
 }
 
 input[type="checkbox"] {
-    width: 1.1rem;
-    height: 1.1rem;
+    width: 1.2rem;
+    height: 1.2rem;
     margin: 0;
     display: grid;
     position: absolute;
     top: 50%;
-    left: -45%;
+    left: -50%;
     transform: translateY(-50%);
     background-color: var(--clr-purple-light);
     border: 0.15em solid var(--clr-text-purple);
@@ -200,6 +200,7 @@ input[type="checkbox"]::before {
     content: "";
     width: 0.65em;
     height: 0.65em;
+    margin-top: 0.1rem;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
     background-color: var(--clr-green-accent);
@@ -250,5 +251,9 @@ input[type="checkbox"]:checked::before {
 
     #main-container {
         width: 95% !important;
+    }
+
+    input[type="checkbox"]::before {
+        margin-top: 0.2rem;
     }
 }
