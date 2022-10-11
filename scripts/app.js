@@ -37,8 +37,8 @@ function addTodo() {
 		todoInput.value = ''
 		localStorage.setItem('Todo List', JSON.stringify(todoStorage));
 
-    	counter++
-    	itemCounter.innerHTML = counter;
+		counter++
+		itemCounter.innerHTML = counter;
 
 		errorMsg.style.display = 'none';
 
@@ -92,8 +92,8 @@ function createTodoList(todo) {
 		}
    });
 
-   // Empty message
-   todoStorage.length > 0 ? emptyMsg.style.display = 'none' : emptyMsg.style.display = 'block';
+	// Empty message
+	todoStorage.length > 0 ? emptyMsg.style.display = 'none' : emptyMsg.style.display = 'block';
 }
 
 // Marks task as completed
@@ -111,12 +111,12 @@ function checkItem(task, value) {
 
 // Delete single item from list
 function deleteItem(index) {
-   todoStorage.splice(index, 1);
-   createTodoList(todoStorage);
+	todoStorage.splice(index, 1);
+	createTodoList(todoStorage);
 	localStorage.setItem('Todo List', JSON.stringify(todoStorage));
 
-   counter--
-   itemCounter.innerHTML = counter;
+	counter--
+	itemCounter.innerHTML = counter;
 
 	if(todoStorage.length < 1) localStorage.clear('Todo List');
 }
