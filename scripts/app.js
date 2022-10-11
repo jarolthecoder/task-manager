@@ -43,12 +43,12 @@ function addTodo() {
 		errorMsg.style.display = 'none';
 
     } else if(todoStorage.some(item => item.name === inputValue)) {
-		errorMsg.innerHTML = 'Item already added to the list'
-		errorMsg.style.display = 'block'
+		errorMsg.innerHTML = 'Item already added to the list';
+		errorMsg.style.display = 'block';
 
     } else if(inputValue.length < 1) {
-		errorMsg.innerHTML = 'Input cannot be empty'
-		errorMsg.style.display = 'block'
+		errorMsg.innerHTML = 'Input cannot be empty';
+		errorMsg.style.display = 'block';
     }
 }
 
