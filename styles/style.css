@@ -102,7 +102,7 @@ h4 {
   height: 1.5rem;
   width: 1.5rem;
   border-radius: 50em;
-  background: url(./icons/clear-icon.png) no-repeat 50% 50%;
+  background: url(/icons/clear-icon.png) no-repeat 50% 50%;
   background-size: contain;
   opacity: 0;
   pointer-events: none;
@@ -256,4 +256,9 @@ input[type="checkbox"]:checked::before {
     input[type="checkbox"]::before {
         margin-top: 0.2rem;
     }
+
+    input[type="checkbox"]:checked::before {
+        transform: scale(1.5);
+    }
+
 }
