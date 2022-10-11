@@ -16,8 +16,8 @@ window.onload = ()=> {
 	todoStorage.forEach(()=> {
 		createTodoList(todoStorage);
 		counter++
-  	});
-  	itemCounter.innerHTML = counter;
+	});
+	itemCounter.innerHTML = counter;
 };
 
 // Displays task on submit
@@ -90,48 +90,47 @@ function createTodoList(todo) {
 			checkBtn.checked = false;
 			taskValue.classList.remove('completed');
 		}
-		
-    });
+   });
 
-    // Empty message
-    todoStorage.length > 0 ? emptyMsg.style.display = 'none' : emptyMsg.style.display = 'block';
+   // Empty message
+   todoStorage.length > 0 ? emptyMsg.style.display = 'none' : emptyMsg.style.display = 'block';
 }
 
 // Marks task as completed
 function checkItem(task, value) {
-    if(!task.completed) {
-        task.completed = true;
-        localStorage.setItem('Todo List', JSON.stringify(todoStorage));
-        value.classList.add('completed');
-    } else {
-        task.completed = false;
-        localStorage.setItem('Todo List', JSON.stringify(todoStorage));
-        value.classList.remove('completed');
-    }
+   if(!task.completed) {
+		task.completed = true;
+		localStorage.setItem('Todo List', JSON.stringify(todoStorage));
+		value.classList.add('completed');
+   } else {
+		task.completed = false;
+		localStorage.setItem('Todo List', JSON.stringify(todoStorage));
+		value.classList.remove('completed');
+   }
 }
 
 // Delete single item from list
 function deleteItem(index) {
-    todoStorage.splice(index, 1);
-    createTodoList(todoStorage);
+   todoStorage.splice(index, 1);
+   createTodoList(todoStorage);
 	localStorage.setItem('Todo List', JSON.stringify(todoStorage));
 
-    counter--
-    itemCounter.innerHTML = counter;
+   counter--
+   itemCounter.innerHTML = counter;
 
 	if(todoStorage.length < 1) localStorage.clear('Todo List');
 }
 
 // Delete all items from list
 clearBtn.addEventListener('click', ()=> {
-    todoStorage = [];
-    counter = 0;
+	todoStorage = [];
+	counter = 0;
 
-    itemCounter.innerHTML = counter;
-    todoList.innerHTML = '';
+	itemCounter.innerHTML = counter;
+	todoList.innerHTML = '';
 
-    localStorage.clear('Todo List');
-    emptyMsg.style.display = 'block';
+	localStorage.clear('Todo List');
+	emptyMsg.style.display = 'block';
 });
 
 
