@@ -34,7 +34,7 @@ function addTodo() {
 		todoStorage.push( {name: inputValue, completed: false} );
 
 		createTodoList(todoStorage);
-		todoInput.value = ''
+		todoInput.value = '';
 		localStorage.setItem('Todo List', JSON.stringify(todoStorage));
 
 		counter++
@@ -54,7 +54,7 @@ function addTodo() {
 
 // Creates and controls task list
 function createTodoList(todo) {
-	todoList.innerHTML = ''
+	todoList.innerHTML = '';
 
 	todo.forEach((task, index) => {
 		let listItem = document.createElement('li');
