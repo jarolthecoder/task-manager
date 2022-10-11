@@ -66,11 +66,11 @@ function createTodoList(todo) {
 		taskValue.innerHTML = `${task.name}`;
 
 		checkBtn.setAttribute('type', 'checkbox');
-		checkBtn.addEventListener('change', ()=> checkItem(task, taskValue));
+		checkBtn.addEventListener('change', ()=> checkTask(task, taskValue));
 
 		deleteBtn.innerHTML = `<i class="fa-solid fa-xmark delete-btn"></i>`;
 		deleteBtn.classList.add('btn');
-		deleteBtn.addEventListener('click', ()=> deleteItem(index));
+		deleteBtn.addEventListener('click', ()=> deleteTask(index));
 
 		listItem.appendChild(taskValue);
 		listItem.appendChild(taskOptions);
@@ -90,27 +90,27 @@ function createTodoList(todo) {
 			checkBtn.checked = false;
 			taskValue.classList.remove('completed');
 		}
-   });
+   	});
 
 	// Empty message
 	todoStorage.length > 0 ? emptyMsg.style.display = 'none' : emptyMsg.style.display = 'block';
 }
 
 // Marks task as completed
-function checkItem(task, value) {
-   if(!task.completed) {
-		task.completed = true;
-		localStorage.setItem('Todo List', JSON.stringify(todoStorage));
-		value.classList.add('completed');
-   } else {
-		task.completed = false;
-		localStorage.setItem('Todo List', JSON.stringify(todoStorage));
-		value.classList.remove('completed');
-   }
+function checkTask(task, value) {
+	if(!task.completed) {
+			task.completed = true;
+			localStorage.setItem('Todo List', JSON.stringify(todoStorage));
+			value.classList.add('completed');
+	} else {
+			task.completed = false;
+			localStorage.setItem('Todo List', JSON.stringify(todoStorage));
+			value.classList.remove('completed');
+	}
 }
 
-// Delete single item from list
-function deleteItem(index) {
+// Delete single task from list
+function deleteTask(index) {
 	todoStorage.splice(index, 1);
 	createTodoList(todoStorage);
 	localStorage.setItem('Todo List', JSON.stringify(todoStorage));
