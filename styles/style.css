@@ -8,7 +8,7 @@
     --clr-blue-light: #abd3f1;
     --clr-blue-accent: #4cb6e8;
     --clr-grey: #dcdcdc;
-    --clr-grey-light: #ececec;
+    --clr-grey-light: #f3f3f3;
     --clr-green: #15865f;
     --clr-green-accent: #66f5a9;
     --clr-red: #f0756a;
@@ -30,16 +30,13 @@
 body {
     width: 100%;
     min-height: 100vh;
-    background: var(--clr-blue-light);
+    background: var(--clr-purple);
     letter-spacing: 1px;
 }
 
-h1 {
-    color: var(--clr-grey-light);
-}
-
+h1,
 h4 {
-    color: var(--clr-text-purple);
+    color: var(--clr-white);
 }
 
 .task {
@@ -65,13 +62,13 @@ h4 {
 
 /* Todo Input */
 #todo-holder {
-    box-shadow: 0px 12px 15px 5px #0d0d203c;
+    /* box-shadow: 0px 12px 15px 5px #0d0d203c; */
     background-color: var(--clr-purple);
 }
 
 #todo-form {
     padding: 0.5rem;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
 }
 
 #todo-form,
@@ -231,10 +228,9 @@ input[type="checkbox"]:checked::before {
 #clear-btn {
     width: 100%;
     padding: 0.5rem;
-    margin: 2rem auto 0 auto;
+    margin: 5rem auto 0 auto;
     background: var(--clr-grey);
     color: var(--clr-purple-dark);
-    font-weight: 600;
 }
 
 #clear-btn:hover {
