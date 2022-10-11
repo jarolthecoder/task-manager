@@ -41,15 +41,13 @@ function addTodo() {
         itemCounter.innerHTML = counter;
 
 		errorMsg.style.display = 'none';
-
     } else if(todoStorage.some(item => item.name === inputValue)) {
 		errorMsg.innerHTML = 'Item already added to the list'
 		errorMsg.style.display = 'block'
-
-	} else if (inputValue.length < 1) {
-		errorMsg.innerHTML = 'Input cannot be empty'
-		errorMsg.style.display = 'block'
-	}
+    } else if (inputValue.length < 1) {
+        errorMsg.innerHTML = 'Input cannot be empty'
+        errorMsg.style.display = 'block'
+    }
 }
 
 // Creates and controls task list
@@ -80,7 +78,7 @@ function createTodoList(todo) {
 
         todoList.appendChild(listItem);
 
-        // Checks if task is completed and keeps its state
+        // Checks state of task and maintains it
         if(task.completed) {
             task.completed = true;
             checkBtn.checked = true;
@@ -103,7 +101,7 @@ function checkItem(task, value) {
         task.completed = true;
         localStorage.setItem('Todo List', JSON.stringify(todoStorage));
         value.classList.add('completed');
-    } else{
+    } else {
         task.completed = false;
         localStorage.setItem('Todo List', JSON.stringify(todoStorage));
         value.classList.remove('completed');
@@ -124,7 +122,7 @@ function deleteItem(index) {
 
 // Delete all items from list
 clearBtn.addEventListener('click', ()=> {
-	todoStorage = [];
+    todoStorage = [];
     counter = 0;
 
     itemCounter.innerHTML = counter;

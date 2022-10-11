@@ -20,6 +20,11 @@ li {
     justify-content: space-between;
 }
 
+#empty-msg,
+.title {
+    font-weight: 600;
+}
+
 #main-container{
     width: 600px !important;
 }
@@ -30,18 +35,13 @@ li {
 
 #empty-msg {
     font-size: 1.5rem;
-    font-weight: 600;
     color: #acacac;
 }
 
 .delete-btn {
+    font-size: 1.2rem;
     background: none;
     color: #bababa;
-    font-size: 1.2rem;
-}
-
-.title {
-    font-weight: 600;
 }
 
 .completed {
