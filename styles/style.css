@@ -1,0 +1,51 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(130deg, #b939e0, #450162);
+}
+
+li::first-letter {
+    text-transform: capitalize;
+}
+
+li {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#main-container{
+    width: 600px !important;
+}
+
+#error-msg {
+    display: none;
+}
+
+#empty-msg {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #acacac;
+}
+
+.delete-btn {
+    background: none;
+    color: #bababa;
+    font-size: 1.2rem;
+}
+
+.title {
+    font-weight: 600;
+}
+
+@media screen and (max-width: 750px) {
+    #main-container {
+        width: 95% !important;
+    }
+}
