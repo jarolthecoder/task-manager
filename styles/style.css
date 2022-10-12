@@ -171,8 +171,12 @@ h4,
     box-shadow: 0 5px 7px #12122416;
 }
 
-.task span:nth-child(1):first-letter {
+.task span:first-letter {
     text-transform: capitalize;
+}
+
+.task span {
+    display: inline-block;
 }
 
 .completed {
