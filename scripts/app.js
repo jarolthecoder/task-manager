@@ -6,6 +6,7 @@ const clearBtn = document.querySelector('#clear-btn');
 const errorMsg = document.querySelector('#error-msg');
 const emptyMsg = document.querySelector('#empty-msg');
 const itemCounter = document.querySelector('#item-counter');
+const notification = document.querySelector('.notification');
 
 let todoStorage = [];
 let counter = 0;
@@ -27,16 +28,18 @@ todoForm.addEventListener('submit', (e) => {
 	addTask();
 });
 
-// Adds task to the list on user input
+// Validates user input and adds task to list
 function addTask() {
   	let inputValue = todoInput.value.trim().toLowerCase();
 
   	if(inputValue.length > 1 && !todoStorage.some(task => task.name === inputValue)) {
 		todoStorage.push( {name: inputValue, completed: false} );
+		todoInput.value = '';
 
 		createTodoList(todoStorage);
+		notify('Task added!', 2500);
+
 		listItem.classList.add('animated', 'animatedFadeInUp', 'fadeInUp');
-		todoInput.value = '';
 		localStorage.setItem('Todo List', JSON.stringify(todoStorage));
 
 		counter++
@@ -68,14 +71,14 @@ function createTodoList(todo) {
 		listItem.classList.add('task');
 	
 		taskValue.innerHTML = `${task.name}`;
-		taskValue.classList.add("task-name");
+		taskValue.classList.add('task-name');
 
 		checkBtn.setAttribute('type', 'checkbox');
 		checkBtn.addEventListener('change', () => checkTask(task, taskValue));
 
 		deleteBtn.innerHTML = `<i class="fa-solid fa-xmark delete-btn"></i>`;
 		deleteBtn.addEventListener('click', () => deleteTask(index));
-		deleteBtn.classList.add("btn");
+		deleteBtn.classList.add('btn');
 	
 		listItem.appendChild(taskOptions);
 		listItem.appendChild(deleteBtn);
@@ -101,7 +104,7 @@ function createTodoList(todo) {
         clearBtn.style.display = "block";
 	} else {
 		emptyMsg.style.display = 'block';
-		clearBtn.style.display = "none";
+		clearBtn.style.display = 'none';
 	}
 }
 
@@ -118,29 +121,42 @@ function checkTask(task, value) {
 	}
 }
 
+// Notification alert
+function notify(text, duration) {
+	notification.innerHTML =`${text}`;
+	notification.classList.toggle('active');
+    setTimeout(() => {
+        notification.classList.remove('active');
+    }, duration);
+}
+
 // Delete single task from list
 function deleteTask(index) {
 	todoStorage.splice(index, 1);
+
 	createTodoList(todoStorage);
-	localStorage.setItem('Todo List', JSON.stringify(todoStorage));
+	notify('Task deleted!', 2500);
 
 	counter--
 	itemCounter.innerHTML = counter;
 
+	localStorage.setItem("Todo List", JSON.stringify(todoStorage));
 	if(todoStorage.length < 1) localStorage.clear('Todo List');
 }
 
 // Delete all items from list
 clearBtn.addEventListener('click', () => {
+	notify('To do list was deleted!', 3000);
+	
 	todoStorage = [];
-	counter = 0;
+	localStorage.clear("Todo List");
 
+	counter = 0;
 	itemCounter.innerHTML = counter;
 	todoList.innerHTML = '';
 
-	localStorage.clear('Todo List');
 	emptyMsg.style.display = 'block';
-	clearBtn.style.display = "none";
+	clearBtn.style.display = 'none';
 });
 
 

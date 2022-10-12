@@ -33,6 +33,7 @@
 body {
     width: 100%;
     min-height: 100vh;
+    padding: 1rem 0;
     background: var(--clr-purple);
     letter-spacing: 1px;
 }
@@ -69,7 +70,7 @@ h4,
 
 #todo-form {
     padding: 0.5rem;
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 
 #todo-form,
@@ -292,6 +293,23 @@ input[type="checkbox"]:checked::before {
     font-size: var(--fs-medium);
     color: var(--clr-text-purple);
     opacity: 0.5;
+}
+
+.notification {
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--clr-blue-accent);
+    color: var(--clr-white);
+    font-size: var(--fs-regular);
+    z-index: 2;
+}
+
+.active {
+    top: 0;
+    transition: top ease 0.5s;
 }
 
 /* Responsive adjust */
