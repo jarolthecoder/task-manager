@@ -140,6 +140,7 @@ clearBtn.addEventListener('click', () => {
 
 	localStorage.clear('Todo List');
 	emptyMsg.style.display = 'block';
+	clearBtn.style.display = "none";
 });
 
 
