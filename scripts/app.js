@@ -64,6 +64,7 @@ function createTodoList(todo) {
 		let checkBtn = document.createElement('input');
 
 		listItem.classList.add('task');
+		listItem.setAttribute("data-aos", "fade-up");
 		taskValue.innerHTML = `${task.name}`;
 
 		checkBtn.setAttribute('type', 'checkbox');
