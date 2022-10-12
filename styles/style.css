@@ -171,7 +171,7 @@ h4,
     box-shadow: 0 5px 7px #12122416;
 }
 
-.task span::first-letter {
+.task span:nth-child(1):first-letter {
     text-transform: capitalize;
 }
 
