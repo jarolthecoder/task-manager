@@ -1,25 +1,28 @@
 :root {
-    /* Dark mode */
+    /* Dark mode colors */
     --clr-white: #fff;
     --clr-purple: #302F57;
     --clr-purple-dark: #27264D;
     --clr-purple-light: #414166;
     --clr-text-purple: #cacae7;
+    --clr-blue: #4c83e8;
     --clr-blue-light: #abd3f1;
+    --clr-blue-dark: #4c69e8;
     --clr-blue-accent: #4cb6e8;
     --clr-grey: #dcdcdc;
     --clr-grey-light: #f3f3f3;
+    --clr-grey-dark: #959595;
     --clr-green: #15865f;
     --clr-green-accent: #66f5a9;
     --clr-red: #f0756a;
 
+    /* Fonts */
     --fs-small: 0.85rem;
     --fs-regular: 1.1rem;
     --fs-medium: 1.3rem;
     --fs-large: 1.6rem;
     --fs-xlarge: 2.rem;
 }
-
 
 *,
 *::before,
@@ -35,16 +38,14 @@ body {
 }
 
 h1,
-h4 {
-    color: var(--clr-white);
-}
-
+h4,
 .task {
     color: var(--clr-white);
 }
 
 #empty-msg,
-.title {
+.title,
+.task {
     font-weight: 600;
 }
 
@@ -53,7 +54,8 @@ h4 {
 }
 
 #main-container{
-    width: 600px !important;
+    width: 600px;
+    max-width: 600px;
 }
 
 #todo-header {
@@ -62,7 +64,6 @@ h4 {
 
 /* Todo Input */
 #todo-holder {
-    /* box-shadow: 0px 12px 15px 5px #0d0d203c; */
     background-color: var(--clr-purple);
 }
 
@@ -72,21 +73,22 @@ h4 {
 }
 
 #todo-form,
+#todo-input ,
 #add-btn {
     border-radius: 5rem;
 }
 
 #todo-form,
 #todo-input {
-    border-radius: 5rem;
     background-color: var(--clr-purple-dark);
 }
 
 #todo-input,
 #todo-input::placeholder {
-    border: none;
     color: var(--clr-text-purple);
 }
+
+#todo-input,
 #todo-input:focus {
     outline: none;
     border: none;
@@ -98,24 +100,33 @@ h4 {
 }
 
 #todo-input::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-  height: 1.5rem;
-  width: 1.5rem;
-  border-radius: 50em;
-  background: url(/icons/clear-icon.png) no-repeat 50% 50%;
-  background-size: contain;
-  opacity: 0;
-  pointer-events: none;
-  cursor: pointer;
+    -webkit-appearance: none;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50em;
+    background: url(/icons/clear-icon.png) no-repeat 50% 50%;
+    background-size: contain;
+    opacity: 0;
+    pointer-events: none;
+    cursor: pointer;
 }
 
 #todo-input:focus::-webkit-search-cancel-button {
-  opacity: 0.7;
-  pointer-events: all;
+    opacity: 0.7;
+    pointer-events: all;
 }
 
 #todo-input::-webkit-search-cancel-button:hover {
-  opacity: 1;
+     opacity: 1;
+}
+
+#todo-input:-webkit-autofill,
+#todo-input:-webkit-autofill:hover, 
+#todo-input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--clr-text-purple);
+    -webkit-box-shadow: 0 0 0px 1000px var(--clr-purple-dark) inset;
+    box-shadow: 0 0 0px 1000px var(--clr-purple-dark) inset;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 #add-btn {
@@ -130,7 +141,7 @@ h4 {
 
 #error-msg {
     display: none;
-    padding-left: 1rem;
+    padding: 1rem 0 0 1rem;
     color: var(--clr-red);
 }
 
@@ -143,14 +154,12 @@ h4 {
     gap: 1rem;
 }
 
-#empty-msg {
-    font-size: var(--fs-medium);
-    color: var(--clr-text-purple);
-    opacity: 0.5;
+.item-counter {
+    color: var(--clr-grey-light);
 }
 
-
 .task {
+    position: relative;
     width: 100%;
     padding: 0.5rem 1rem;
     display: flex;
@@ -159,19 +168,11 @@ h4 {
     border-radius: 0.25rem;
     font-size: var(--fs-regular);
     background-color: var(--clr-purple-light);
-    box-shadow: 0 5px 7px #12122423;
+    box-shadow: 0 5px 7px #12122416;
 }
 
 .task span::first-letter {
     text-transform: capitalize;
-}
-
-.task span:nth-child(2) {
-    position: relative;
-}
-
-.item-counter {
-    color: var(--clr-grey-light);
 }
 
 .completed {
@@ -180,21 +181,64 @@ h4 {
     transition: opacity ease 0.3s;
 }
 
+.task-name {
+    padding-left: 2rem;
+}
+
+/* List animation */
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 0.2s;
+    -webkit-animation-duration: 0.2s;
+    animation-fill-mode: both;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+
 input[type="checkbox"] {
     width: 1.2rem;
     height: 1.2rem;
     margin: 0;
     display: grid;
     position: absolute;
-    top: 45%;
-    left: -60%;
-    transform: translateY(-45%);
+    top: 50%;
+    left: 3%;
+    transform: translateY(-50%);
     background-color: var(--clr-purple-light);
     border: 0.15em solid var(--clr-text-purple);
     border-radius: 5em;
     -webkit-appearance: none;
     appearance: none;
     cursor: pointer;
+    z-index: 1;
 }
 
 input[type="checkbox"]::before {
@@ -231,27 +275,36 @@ input[type="checkbox"]:checked::before {
     width: 50%;
     padding: 0.5rem;
     margin: 5rem auto 0 auto;
-    background: var(--clr-grey);
-    color: var(--clr-purple-dark);
+    background: var(--clr-blue-dark);
+    color: var(--clr-white);
+    display: none;
 }
 
 #clear-btn:hover {
-    background: var(--clr-grey-light);
+    background: var(--clr-blue);
 }
 
+#empty-msg {
+    font-size: var(--fs-medium);
+    color: var(--clr-text-purple);
+    opacity: 0.5;
+}
+
+/* Responsive adjust */
 @media screen and (max-width: 750px) {
     :root {
-    --fs-small: 0.85rem;
-    --fs-regular: 1rem;
-    --fs-medium: 1.2rem;
-    --fs-large: 1.4rem;
-}
+        --fs-small: 0.85rem;
+        --fs-regular: 1rem;
+        --fs-medium: 1.2rem;
+        --fs-large: 1.4rem;
+    }
+    
     .section-container {
         padding: 3rem 1rem;
     }
 
     #main-container {
-        width: 95% !important;
+        width: 95%;
     }
 
     input[type="checkbox"]::before {

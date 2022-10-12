@@ -17,7 +17,7 @@
             <header id="todo-header" class="w-100 section-container">
                 <h1>Task Manager</h1>
                 <section class="input-container">
-                    <form id="todo-form" class="d-flex justify-content-between w-100">
+                    <form id="todo-form" class="d-flex justify-content-between">
                         <input type="search" id="todo-input" class="form-control shadow-none" placeholder="Add new task">
                         <button id="add-btn" class="btn" type="submit"><i class="fa-solid fa-plus"></i></button>
                     </form>
@@ -26,14 +26,14 @@
             </header>
             <!-- Task Manage Body -->
             <section class="list-container w-100 section-container">
-                <header class="d-flex justify-content-between align-item-end w-100">
-                    <h4>To Do</h4>
+                <header class="d-flex justify-content-between align-item-end">
+                    <h4>To do list</h4>
                     <p class="item-counter"><span class="title">Items:</span> <span id="item-counter">0</span></p>
                 </header>
-                <ul id="todo-list" class="list-group">
+                <ul id="todo-list" class="list-group pt-3">
                     <!-- Tasks List -->
                 </ul>
-                <p id="empty-msg" class="py-3">Your list is empty.</p>
+                <p id="empty-msg" class="py-3">Your list is empty, add a task</p>
                 <button id="clear-btn" class="btn"><i class="fa-solid fa-trash"></i> Delete all tasks</button>
             </section>
         </article>
