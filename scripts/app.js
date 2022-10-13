@@ -104,10 +104,10 @@ function createTodoList(todo) {
 	// Empty message & Clear button
 	if(todoStorage.length > 0)  {
 		emptyMsg.style.display = 'none';
-        clearBtn.style.display = "block";
+        clearBtn.classList.add('btn-active');
 	} else {
 		emptyMsg.style.display = 'block';
-		clearBtn.style.display = 'none';
+		clearBtn.classList.remove('btn-active');
 	}
 }
 

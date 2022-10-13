@@ -226,12 +226,22 @@ h4,
 }
 
 #clear-btn {
-    width: 50%;
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+    width: 200px;
     padding: 0.5rem;
     margin: 5rem auto 0 auto;
     background: var(--clr-accent-blue);
     color: var(--clr-heading);
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+#clear-btn.btn-active {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity ease 1s 2s;
 }
 
 #clear-btn:hover {
@@ -349,7 +359,7 @@ h4,
     }
 
     #clear-btn {
-        width: 100%;
+        right: 40%;
     }
 
 }
