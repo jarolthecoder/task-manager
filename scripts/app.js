@@ -1,17 +1,27 @@
+// Variables initial declaration in the following order:
+// const for: Todo panel components, Buttons, Messages and Notifications, Popup window and components
+// let for: items storage, counter, task
+
 const todoForm = document.querySelector('#todo-form');
 const todoInput = document.querySelector('#todo-input');
 const todoList = document.querySelector('#todo-list');
+const itemCounter = document.querySelector('#item-counter');
+
 const addBtn = document.querySelector('#add-btn');
 const clearBtn = document.querySelector('#clear-btn');
+
 const errorMsg = document.querySelector('#error-msg');
 const emptyMsg = document.querySelector('#empty-msg');
-const itemCounter = document.querySelector('#item-counter');
 const notification = document.querySelector('.notification');
+
+const popupModal = document.querySelector('#popup-modal');
+const popup = document.querySelector('.popup-body');
+const popupDeleteBtn = document.querySelector('.popup-delete-btn');
+const popupCancelBtn = document.querySelector('.popup-cancel-btn');
 
 let todoStorage = [];
 let counter = 0;
 let listItem;
-
 
 // Displays saved items on load if any
 window.onload = () => {
@@ -21,6 +31,12 @@ window.onload = () => {
 		counter++
 	});
 	itemCounter.innerHTML = counter;
+
+	if ((window.matchMedia('screen and (max-width: 750px)').matches)) {
+		clearBtn.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+	} else {
+		clearBtn.innerHTML = `<i class="fa-solid fa-trash"></i> Delete list`;
+	}
 };
 
 // Displays task on submit
@@ -148,7 +164,7 @@ function deleteTask(index) {
 }
 
 // Delete all items from list
-clearBtn.addEventListener('click', () => {
+function deleteList() {
 	notify('To do list was deleted!', 3000);
 	
 	todoStorage = [];
@@ -160,4 +176,19 @@ clearBtn.addEventListener('click', () => {
 
 	emptyMsg.style.display = 'block';
 	clearBtn.style.display = 'none';
+}
+
+// Toggle popup window
+clearBtn.addEventListener('click', () => {
+	popupModal.classList.add('popup-active');
+	popup.classList.add('animated', 'animatedFadeInUp', 'fadeInUp');
+});
+
+popupDeleteBtn.addEventListener('click', ()=> {
+	deleteList();
+	popupModal.classList.remove('popup-active');
+});
+
+popupCancelBtn.addEventListener('click', ()=> {
+	popupModal.classList.remove('popup-active');
 });
