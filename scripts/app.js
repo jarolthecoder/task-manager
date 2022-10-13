@@ -180,8 +180,10 @@ clearBtn.addEventListener('click', () => {
 popupDeleteBtn.addEventListener('click', ()=> {
 	deleteList();
 	popupModal.classList.remove('popup-active');
+	popup.classList.remove('animated', 'animatedFadeInUp', 'fadeInUp');
 });
 
 popupCancelBtn.addEventListener('click', ()=> {
 	popupModal.classList.remove('popup-active');
+	popup.classList.remove('animated', 'animatedFadeInUp', 'fadeInUp');
 });
