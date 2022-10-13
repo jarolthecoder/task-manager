@@ -9,17 +9,19 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
-<body class="d-flex justify-content-center">
+<body class="d-flex justify-content-center">  
     <main id="main-container">
         <!-- Task Manager Screen -->
-        <article id="todo-holder" class="d-flex justify-content-center align-items-start flex-column rounded" data-aos="fade-up" data-aos-duration="600">
+        <article id="todo-holder" class="d-flex justify-content-center align-items-start flex-column" data-aos="fade-up" data-aos-duration="600">
             <!-- Task Manager Header -->
             <header id="todo-header" class="w-100 section-container">
                 <h1>Task Manager</h1>
                 <section class="input-container">
                     <form id="todo-form" class="d-flex justify-content-between">
                         <input type="search" id="todo-input" class="form-control shadow-none" placeholder="Add new task">
-                        <button id="add-btn" class="btn" type="submit"><i class="fa-solid fa-plus"></i></button>
+                        <button id="add-btn" class="btn" type="submit">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
                     </form>
                     <p id="error-msg"></p>
                 </section>

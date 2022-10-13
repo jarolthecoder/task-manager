@@ -12,6 +12,7 @@ let todoStorage = [];
 let counter = 0;
 let listItem;
 
+
 // Displays saved items on load if any
 window.onload = () => {
 	todoStorage = JSON.parse(localStorage.getItem('Todo List')) || [];
@@ -48,11 +49,11 @@ function addTask() {
 		errorMsg.style.display = 'none';
 
     } else if(todoStorage.some(task => task.name === inputValue)) {
-		errorMsg.innerHTML = 'Item already added to the list.';
+		errorMsg.innerHTML = 'Task already added to the list.';
 		errorMsg.style.display = 'block';
 
     } else if(inputValue.length < 1) {
-		errorMsg.innerHTML = 'Input cannot be empty! Enter a task.';
+		errorMsg.innerHTML = 'Enter a task!';
 		errorMsg.style.display = 'block';
     }
 }
@@ -62,7 +63,7 @@ function createTodoList(todo) {
 	todoList.innerHTML = '';
 
 	todo.forEach((task, index) => {
-		let taskValue = document.createElement('span');
+		let taskName = document.createElement('span');
 		let taskOptions = document.createElement('span');
 		let deleteBtn = document.createElement('button');
 		let checkBtn = document.createElement('input');
@@ -70,31 +71,33 @@ function createTodoList(todo) {
 		listItem = document.createElement("li");
 		listItem.classList.add('task');
 	
-		taskValue.innerHTML = `${task.name}`;
-		taskValue.classList.add('task-name');
+		taskName.setAttribute('contenteditable', 'true');
+		taskName.innerHTML = `${task.name}`;
+		taskName.classList.add('task-name');
 
 		checkBtn.setAttribute('type', 'checkbox');
-		checkBtn.addEventListener('change', () => checkTask(task, taskValue));
+		checkBtn.classList.add('check-btn');
+		checkBtn.addEventListener('change', () => checkTask(task, taskName));
 
 		deleteBtn.innerHTML = `<i class="fa-solid fa-xmark delete-btn"></i>`;
-		deleteBtn.addEventListener('click', () => deleteTask(index));
 		deleteBtn.classList.add('btn');
-	
+		deleteBtn.addEventListener('click', () => deleteTask(index));
+
 		listItem.appendChild(taskOptions);
 		listItem.appendChild(deleteBtn);
 		taskOptions.appendChild(checkBtn);
-		taskOptions.appendChild(taskValue);
+		taskOptions.appendChild(taskName);
 		todoList.appendChild(listItem);
 
 		// Checks state of task and maintains it
 		if(task.completed) {
 			task.completed = true;
 			checkBtn.checked = true;
-			taskValue.classList.add('completed');
+			taskName.classList.add('completed');
 		} else {
 			task.completed = false;
 			checkBtn.checked = false;
-			taskValue.classList.remove('completed');
+			taskName.classList.remove('completed');
 		}
    	});
 
@@ -158,5 +161,3 @@ clearBtn.addEventListener('click', () => {
 	emptyMsg.style.display = 'block';
 	clearBtn.style.display = 'none';
 });
-
-
