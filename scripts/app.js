@@ -171,7 +171,7 @@ function deleteList() {
 	clearBtn.style.display = 'none';
 }
 
-// Toggle popup window
+// Toggle delete popup window
 clearBtn.addEventListener('click', () => {
 	popupModal.classList.add('popup-active');
 	popup.classList.add('animated', 'animatedFadeInUp', 'fadeInUp');
