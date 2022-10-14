@@ -167,6 +167,7 @@ function deleteList() {
 	todoList.innerHTML = '';
 
 	emptyMsg.style.display = 'block';
+	clearBtn.classList.remove('btn-active');
 }
 
 // Toggle delete popup window
