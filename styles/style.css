@@ -302,7 +302,7 @@ h4,
 /* Notifications */
 .notification {
     position: fixed;
-    top: -15%;
+    top: -20%;
     left: 0;
     width: 100%;
     padding: 1rem;
