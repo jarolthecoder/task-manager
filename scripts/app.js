@@ -80,7 +80,6 @@ function createTodoList(todo) {
 		listItem = document.createElement("li");
 		listItem.classList.add('task');
 	
-		taskName.setAttribute('contenteditable', 'true');
 		taskName.innerHTML = `${task.name}`;
 		taskName.classList.add('task-name');
 

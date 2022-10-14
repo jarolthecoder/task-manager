@@ -159,10 +159,6 @@ h4,
     text-transform: capitalize;
 }
 
-[contenteditable] {
-  outline: 0px solid transparent;
-}
-
 .task span {
     display: inline-block;
 }
@@ -314,7 +310,7 @@ h4,
 
 /* Notifications */
 .notification {
-    position: absolute;
+    position: fixed;
     top: -10%;
     left: 0;
     width: 100%;
