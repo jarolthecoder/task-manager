@@ -131,6 +131,7 @@ h4,
 }
 
 /* Todo list and items */
+
 #todo-list {
     display: flex;
     justify-content: flex-start;
@@ -150,9 +151,9 @@ h4,
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 0.25rem;
     font-size: var(--fs-regular);
-    background-color: var(--clr-primary-light);
+    border-bottom: 1.5px solid var(--clr-primary-light);;
+    /* background-color: var(--clr-primary-light); */
 }
 
 .task span:first-letter {
