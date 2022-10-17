@@ -1,12 +1,15 @@
 const todoForm = document.querySelector('#todo-form');
 const todoInput = document.querySelector('#todo-input');
 const todoList = document.querySelector('#todo-list');
+
 const itemCounter = document.querySelector('#item-counter');
 const addBtn = document.querySelector('#add-btn');
 const clearBtn = document.querySelector('#clear-btn');
+
 const errorMsg = document.querySelector('#error-msg');
 const emptyMsg = document.querySelector('#empty-msg');
 const notification = document.querySelector('.notification');
+
 const popupModal = document.querySelector('#popup-modal');
 const popup = document.querySelector('.popup-body');
 const popupDeleteBtn = document.querySelector('.popup-delete-btn');
